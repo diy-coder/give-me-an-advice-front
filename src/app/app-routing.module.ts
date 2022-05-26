@@ -5,6 +5,8 @@ import { ListConselhoComponent } from './componentes/forms/conselho/list-conselh
 import { FormDicaComponent } from './componentes/forms/dica/form-dica/form-dica.component';
 import { ListDicaComponent } from './componentes/forms/dica/list-dica/list-dica.component';
 import { HomeComponent } from './componentes/forms/home/home.component';
+import { FormMotivacionalComponent } from './componentes/forms/motivacional/form-motivacional/form-motivacional.component';
+import { ListMotivacionalComponent } from './componentes/forms/motivacional/list-motivacional/list-motivacional.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     path: 'dicas/:identificador',
     component: FormDicaComponent,
+  },
+  {
+    path: 'motivacionais',
+    component: ListMotivacionalComponent,
+  },
+  {
+    path: 'motivacionais/:identificador',
+    component: FormMotivacionalComponent,
   },
   {
     path: '**',
