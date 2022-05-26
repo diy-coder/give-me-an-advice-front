@@ -1,0 +1,112 @@
+.box {
+  background-image: repeating-linear-gradient(
+      60deg,
+      #333333,
+      #333333 28.2px,
+      transparent 30px,
+      transparent 58.2px,
+      #333333 60px
+    ),
+    repeating-linear-gradient(
+      150deg,
+      #333333,
+      #333333 28.2px,
+      transparent 30px,
+      transparent 58.2px,
+      #333333 60px
+    ),
+    repeating-linear-gradient(
+      240deg,
+      #333333,
+      #333333 28.2px,
+      transparent 30px,
+      transparent 58.2px,
+      #333333 60px
+    ),
+    repeating-linear-gradient(
+      330deg,
+      #333333,
+      #333333 28.2px,
+      transparent 30px,
+      transparent 58.2px,
+      #333333 60px
+    );
+  background-size: 10px 100%, 100% 10px, 10px 100%, 100% 10px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  width: 35%;
+  height: fit-content;
+  padding: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 3em;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1em;
+}
+
+body {
+  font-family: sans-serif;
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+
+.base-timer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+}
+
+.base-timer__path-remaining.green {
+  color: rgb(65, 184, 131);
+}
+
+.base-timer__path-remaining.orange {
+  color: orange;
+}
+
+.base-timer__path-remaining.red {
+  color: red;
+}
+
+.base-timer__label {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 10em;
+  color: green;
+}
+
+.center-horizontal {
+  margin-left: auto;
+  margin-right: auto;
+}
