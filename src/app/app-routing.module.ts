@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormConselhoComponent } from './componentes/forms/conselho/form-conselho/form-conselho.component';
 import { ListConselhoComponent } from './componentes/forms/conselho/list-conselho/list-conselho.component';
@@ -44,7 +46,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes, { useHash: true }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

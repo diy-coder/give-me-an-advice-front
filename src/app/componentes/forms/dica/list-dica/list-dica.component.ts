@@ -1,4 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { threadId } from 'worker_threads';
+import { DicaService } from '../dica.service';
 
 @Component({
   selector: 'app-list-dica',
@@ -14,9 +17,23 @@ export class ListDicaComponent implements OnInit, OnDestroy, AfterViewInit {
 
   FULL_DASH_ARRAY = 283;
 
-  constructor() {}
+  displayedColumns = [
+    { head: 'Id', el: 'id' },
+    { head: 'Nome', el: 'nome' },
+    { head: 'Descricao', el: 'descricao' },
+    { head: 'Usuário', el: 'usuario' },
+  ];
 
-  ngOnInit(): void {}
+  data: any[] = [];
+
+  constructor(private router: Router, private dicaService: DicaService) {}
+
+  ngOnInit(): void {
+    this.dicaService.getAll().then((d) => {
+      console.log(d);
+      this.data = d;
+    });
+  }
 
   ngAfterViewInit(): void {
     this.setCircleDasharray(this.timeLeft, this.TIME_LIMIT);
@@ -48,6 +65,12 @@ export class ListDicaComponent implements OnInit, OnDestroy, AfterViewInit {
 
   calculateTimeFraction(timeLeft: number, timeLimit: number) {
     return timeLeft / timeLimit;
+  }
+
+  executarAcao(event) {
+    if (event.acao === 'add-new') {
+      this.router.navigateByUrl('/dicas/0');
+    }
   }
 
   ngOnDestroy(): void {

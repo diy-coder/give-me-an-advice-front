@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataStore } from '@aws-amplify/datastore';
+import { Dica } from 'src/models';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +13,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  async getAll() {
+    const models = await DataStore.query(Dica);
+    console.log(models);
+  }
+
   gotoDicas() {
-    this.router.navigate(['dicas']);
+    this.router.navigateByUrl('dicas');
   }
 
   gotoConselhos() {

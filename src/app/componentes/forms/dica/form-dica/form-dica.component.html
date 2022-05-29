@@ -1,1 +1,65 @@
-<p>form-dica works!</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Editar Dica</h4>
+            <p class="card-category">
+              Informações sobre a dica a ser cadastrada
+            </p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="formDica">
+              <div class="row">
+                <div class="col-md-3">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      placeholder="Nome da sua Dica"
+                      formControlName="nome"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Sua dica</label>
+                  <mat-form-field class="example-full-width">
+                    <textarea
+                      matInput
+                      placeholder="Digite aqui sua dica"
+                      formControlName="descricao"
+                    ></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 d-flex flex-row-reverse">
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="btn btn-success"
+                    (click)="salvarInformacoes()"
+                  >
+                    Salvar Dica
+                  </button>
+
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="btn btn-danger"
+                    (click)="cancelar()"
+                  >
+                    Cancelar Alterações
+                  </button>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
