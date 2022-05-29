@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Dica } from 'src/models';
 import { DicaService } from '../dica.service';
 
@@ -11,17 +11,27 @@ import { DicaService } from '../dica.service';
 })
 export class FormDicaComponent implements OnInit {
   formDica: FormGroup;
+  identifier;
 
   constructor(
     private formBuilder: FormBuilder,
     private dicaService: DicaService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.formDica = this.formBuilder.group({});
   }
 
   ngOnInit(): void {
+    this.identifier = this.route.snapshot.paramMap.get('identificador');
     this.construirFormulario();
+    this.carregarDados();
+  }
+
+  carregarDados() {
+    this.dicaService.getById(this.identifier).then((d: any) => {
+      this.formDica.patchValue(d);
+    });
   }
 
   salvarInformacoes() {

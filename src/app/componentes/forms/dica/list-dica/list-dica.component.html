@@ -6,6 +6,7 @@
   [headerTitle]="'Distribuição de Vendas'"
   [showAddButtom]="true"
   (acaoSelecionada)="executarAcao($event)"
+  (selectedRow)="onRowSelect($event)"
   [marginTopClass]="'mt-70-neg'"
 >
 </app-tabela>

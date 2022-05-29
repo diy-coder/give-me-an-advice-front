@@ -11,6 +11,10 @@ export class DicaService {
     return DataStore.query(Dica);
   }
 
+  getById(id) {
+    return DataStore.query(Dica, id);
+  }
+
   save(dica: Dica) {
     return DataStore.save(dica);
   }

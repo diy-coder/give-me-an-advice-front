@@ -30,7 +30,6 @@ export class ListDicaComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.dicaService.getAll().then((d) => {
-      console.log(d);
       this.data = d;
     });
   }
@@ -41,6 +40,13 @@ export class ListDicaComponent implements OnInit, OnDestroy, AfterViewInit {
     this.intervalCounter = setInterval(() => {
       this.formatTime();
     }, 1_000);
+  }
+
+  onRowSelect($event) {
+    if (!$event) {
+      return;
+    }
+    this.router.navigate(['dicas/' + $event.id]);
   }
 
   formatTime() {
