@@ -39,12 +39,8 @@ export class FormDicaComponent implements OnInit {
   salvarInformacoes() {
     let dicaInfo = this.formDica.getRawValue();
 
-    let dica = Dica.copyOf(this.originalValue, (updated) => {
-      (updated.nome = dicaInfo.nome), (updated.descricao = dicaInfo.descricao);
-    });
-
     this.dicaService
-      .save(dica)
+      .save(this.originalValue, dicaInfo)
       .then((d) => {
         console.log('Dica salva com sucesso');
         this.cancelar();
