@@ -101,9 +101,9 @@ export class TabelaComponent
     this.selectedRow.emit(row);
   }
 
-  propagate(acao, item) {
+  propagate(event, acao, item) {
     this.selectedRowIndex = -1;
-    //event.stopImmediatePropagation();
+    event.stopImmediatePropagation();
     this.acaoSelecionada.emit({ acao, item });
   }
 

@@ -17,11 +17,21 @@ export class ListDicaComponent implements OnInit, OnDestroy, AfterViewInit {
 
   FULL_DASH_ARRAY = 283;
 
+  botoes = [
+    {
+      nome: 'excluir',
+      acao: 'excluir',
+      icone: 'apagar.svg',
+      title: 'Excluir Turma',
+    },
+  ];
+
   displayedColumns = [
     { head: 'Id', el: 'id' },
     { head: 'Nome', el: 'nome' },
     { head: 'Descricao', el: 'descricao' },
     { head: 'Usuário', el: 'usuario' },
+    { head: 'Ações', el: 'actions', botoes: this.botoes },
   ];
 
   data: any[] = [];
@@ -29,6 +39,10 @@ export class ListDicaComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(private router: Router, private dicaService: DicaService) {}
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this.dicaService.getAll().then((d) => {
       this.data = d;
     });
@@ -76,6 +90,16 @@ export class ListDicaComponent implements OnInit, OnDestroy, AfterViewInit {
   executarAcao(event) {
     if (event.acao === 'add-new') {
       this.router.navigateByUrl('/dicas/0');
+    } else if (event.acao == 'excluir') {
+      this.dicaService
+        .delete(event.item.id)
+        .then((d) => {
+          console.log('Item excluido com sucesso');
+          this.loadData();
+        })
+        .catch((e) => {
+          console.log('Erro ao tentar excluir registro');
+        });
     }
   }
 

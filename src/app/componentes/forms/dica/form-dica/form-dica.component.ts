@@ -12,6 +12,7 @@ import { DicaService } from '../dica.service';
 export class FormDicaComponent implements OnInit {
   formDica: FormGroup;
   identifier;
+  originalValue;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,17 +32,15 @@ export class FormDicaComponent implements OnInit {
   carregarDados() {
     this.dicaService.getById(this.identifier).then((d: any) => {
       this.formDica.patchValue(d);
+      this.originalValue = d;
     });
   }
 
   salvarInformacoes() {
-    const dicaInfo = this.formDica.getRawValue();
+    let dicaInfo = this.formDica.getRawValue();
 
-    let dica = new Dica({
-      nome: dicaInfo.nome,
-      descricao: dicaInfo.descricao,
-      usuario: 'test12346789@testemailtestemail.com',
-      ativo: true,
+    let dica = Dica.copyOf(this.originalValue, (updated) => {
+      (updated.nome = dicaInfo.nome), (updated.descricao = dicaInfo.descricao);
     });
 
     this.dicaService
@@ -51,7 +50,7 @@ export class FormDicaComponent implements OnInit {
         this.cancelar();
       })
       .catch((e) => {
-        console.log('Erro ao tentar salvar dica');
+        console.log('Erro ao tentar salvar dica: ' + e);
       });
   }
 

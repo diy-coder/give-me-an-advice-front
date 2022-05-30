@@ -15,7 +15,7 @@
                 mat-button
                 class="btn btn-info btn-fill"
                 style="margin-right: 1%"
-                (click)="propagate('add-new', '')"
+                (click)="propagate($event, 'add-new', '')"
               >
                 Adicionar Registro
               </button>
@@ -90,7 +90,7 @@
                       <div *ngIf="!col.tipo || col.tipo != 'botao'">
                         <img
                           *ngFor="let acao of col.botoes"
-                          (click)="propagate(acao.acao, element)"
+                          (click)="propagate($event, acao.acao, element)"
                           [src]="'/assets/img/' + acao.icone"
                           [alt]="acao.title"
                           [title]="acao.title"
@@ -109,7 +109,7 @@
                           mat-button
                           [ngClass]="'btn btn-fill ' + acao.classe"
                           style="margin-right: 1%"
-                          (click)="propagate(acao.acao, element)"
+                          (click)="propagate($event, acao.acao, element)"
                         >
                           {{ acao.titulo }}
                         </button>
