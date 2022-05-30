@@ -1,1 +1,65 @@
-<p>form-motivacional works!</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Editar Conselho Motivacional</h4>
+            <p class="card-category">
+              Informações sobre o conselho motivacional a ser cadastrada
+            </p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="formularioCadastro">
+              <div class="row">
+                <div class="col-md-3">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      placeholder="Nome do seu Conselho Motivacional"
+                      formControlName="nome"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Seu Conselho Motivacional</label>
+                  <mat-form-field class="example-full-width">
+                    <textarea
+                      matInput
+                      placeholder="Digite aqui seu conselho motivacional"
+                      formControlName="descricao"
+                    ></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 d-flex flex-row-reverse">
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="btn btn-success"
+                    (click)="salvarInformacoes()"
+                  >
+                    Salvar Motivacional
+                  </button>
+
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="btn btn-danger"
+                    (click)="cancelar()"
+                  >
+                    Cancelar Alterações
+                  </button>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

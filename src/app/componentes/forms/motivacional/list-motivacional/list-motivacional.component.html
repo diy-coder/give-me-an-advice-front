@@ -1,1 +1,12 @@
-<p>list-motivacional works!</p>
+<app-tabela
+  *ngIf="true"
+  [displayedColumns]="displayedColumns"
+  [dados]="data"
+  [showHeader]="true"
+  [headerTitle]="'Conselhos Motivacionais ja cadastrados no sistema'"
+  [showAddButtom]="true"
+  (acaoSelecionada)="executarAcao($event)"
+  (selectedRow)="onRowSelect($event)"
+  [marginTopClass]="'mt-70-neg'"
+>
+</app-tabela>

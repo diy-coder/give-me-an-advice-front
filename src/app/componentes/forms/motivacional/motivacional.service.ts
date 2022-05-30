@@ -3,18 +3,18 @@ import { Injectable } from '@angular/core';
 import { DataStore } from '@aws-amplify/datastore';
 import { Auth } from 'aws-amplify';
 import { ServiceInterface } from 'src/app/generics/service.interface';
-import { Conselho } from 'src/models';
+import { Motivacional } from 'src/models';
 
 @Injectable({ providedIn: 'root' })
-export class ConselhoService implements ServiceInterface {
+export class MotivacionalService implements ServiceInterface {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return DataStore.query(Conselho);
+    return DataStore.query(Motivacional);
   }
 
   getById(id) {
-    return DataStore.query(Conselho, id);
+    return DataStore.query(Motivacional, id);
   }
 
   async save(original, atual) {
@@ -22,13 +22,13 @@ export class ConselhoService implements ServiceInterface {
 
     if (null == original) {
       const userInfo = await Auth.currentUserInfo();
-      model = new Conselho({
+      model = new Motivacional({
         nome: atual.nome,
         descricao: atual.descricao,
         usuario: userInfo.attributes.email,
       });
     } else {
-      model = Conselho.copyOf(original, (updated) => {
+      model = Motivacional.copyOf(original, (updated) => {
         (updated.nome = atual.nome), (updated.descricao = atual.descricao);
       });
     }
@@ -37,6 +37,6 @@ export class ConselhoService implements ServiceInterface {
   }
 
   delete(id) {
-    return DataStore.delete(Conselho, id);
+    return DataStore.delete(Motivacional, id);
   }
 }

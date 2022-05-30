@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DataStore } from '@aws-amplify/datastore';
 import { Auth } from 'aws-amplify';
-import { ServiceInterface } from 'src/app/interfaces/service.interface';
+import { ServiceInterface } from 'src/app/generics/service.interface';
 import { Dica } from 'src/models';
 
 @Injectable({ providedIn: 'root' })
