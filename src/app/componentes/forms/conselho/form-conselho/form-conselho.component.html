@@ -1,1 +1,65 @@
-<p>form-conselho works!</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Editar Conselho</h4>
+            <p class="card-category">
+              Informações sobre o conselho a ser cadastrada
+            </p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="formConselho">
+              <div class="row">
+                <div class="col-md-3">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      placeholder="Nome do seu Conselho"
+                      formControlName="nome"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Seu Conselho</label>
+                  <mat-form-field class="example-full-width">
+                    <textarea
+                      matInput
+                      placeholder="Digite aqui seu conselho"
+                      formControlName="descricao"
+                    ></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 d-flex flex-row-reverse">
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="btn btn-success"
+                    (click)="salvarInformacoes()"
+                  >
+                    Salvar Conselho
+                  </button>
+
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="btn btn-danger"
+                    (click)="cancelar()"
+                  >
+                    Cancelar Alterações
+                  </button>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

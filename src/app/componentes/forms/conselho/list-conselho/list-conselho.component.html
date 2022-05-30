@@ -1,1 +1,12 @@
-<p>list-conselho works!</p>
+<app-tabela
+  *ngIf="true"
+  [displayedColumns]="displayedColumns"
+  [dados]="data"
+  [showHeader]="true"
+  [headerTitle]="'Conselhos ja cadastrados no sistema'"
+  [showAddButtom]="true"
+  (acaoSelecionada)="executarAcao($event)"
+  (selectedRow)="onRowSelect($event)"
+  [marginTopClass]="'mt-70-neg'"
+>
+</app-tabela>
