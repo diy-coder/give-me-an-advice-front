@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  logout() {
+    Auth.signOut();
   }
-
 }

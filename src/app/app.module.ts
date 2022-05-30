@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from './componentes/forms/forms.module';
 import { MenuModule } from './componentes/menu/menu.module';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+
 Amplify.configure(awsconfig);
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +21,7 @@ Amplify.configure(awsconfig);
     BrowserAnimationsModule,
     MenuModule,
     HttpClientModule,
+    AmplifyAuthenticatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

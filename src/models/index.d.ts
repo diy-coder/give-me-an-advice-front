@@ -1,12 +1,12 @@
-import {
-  ModelInit,
-  MutableModel,
-  PersistentModelConstructor,
-} from '@aws-amplify/datastore';
+import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
+
+
+
+
 
 type DicaMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
-};
+}
 
 export declare class Dica {
   readonly id: string;
@@ -17,10 +17,5 @@ export declare class Dica {
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Dica, DicaMetaData>);
-  static copyOf(
-    source: Dica,
-    mutator: (
-      draft: MutableModel<Dica, DicaMetaData>
-    ) => MutableModel<Dica, DicaMetaData> | void
-  ): Dica;
+  static copyOf(source: Dica, mutator: (draft: MutableModel<Dica, DicaMetaData>) => MutableModel<Dica, DicaMetaData> | void): Dica;
 }
