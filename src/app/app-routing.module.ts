@@ -9,6 +9,7 @@ import { ListDicaComponent } from './componentes/forms/dica/list-dica/list-dica.
 import { HomeComponent } from './componentes/forms/home/home.component';
 import { FormMotivacionalComponent } from './componentes/forms/motivacional/form-motivacional/form-motivacional.component';
 import { ListMotivacionalComponent } from './componentes/forms/motivacional/list-motivacional/list-motivacional.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
   {
     path: 'conselhos/:identificador',
     component: FormConselhoComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'dicas',
@@ -30,6 +32,7 @@ const routes: Routes = [
   {
     path: 'dicas/:identificador',
     component: FormDicaComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'motivacionais',
@@ -38,6 +41,7 @@ const routes: Routes = [
   {
     path: 'motivacionais/:identificador',
     component: FormMotivacionalComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

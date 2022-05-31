@@ -1,15 +1,17 @@
-<app-tabela
-  *ngIf="true"
-  [displayedColumns]="displayedColumns"
-  [dados]="data"
-  [showHeader]="true"
-  [headerTitle]="'Dicas ja cadastradas no sistema'"
-  [showAddButtom]="true"
-  (acaoSelecionada)="executarAcao($event)"
-  (selectedRow)="onRowSelect($event)"
-  [marginTopClass]="'mt-70-neg'"
->
-</app-tabela>
+<div class="col-md-8 offset-md-2">
+  <app-tabela
+    *ngIf="true"
+    [displayedColumns]="displayedColumns"
+    [dados]="data"
+    [showHeader]="true"
+    [headerTitle]="'Dicas ja cadastradas no sistema'"
+    [showAddButtom]="true"
+    (acaoSelecionada)="executarAcao($event)"
+    (selectedRow)="onRowSelect($event)"
+    [marginTopClass]="'mt-70-neg'"
+  >
+  </app-tabela>
+</div>
 <div *ngIf="false">
   <section *ngIf="!showTimer">
     <div class="container center-vertical">
