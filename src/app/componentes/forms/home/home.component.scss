@@ -1,159 +1,103 @@
-/* The button-maker */
-@mixin arrow-button(
-  $color,
-  $background,
-  $shadow,
-  $font-size,
-  $width,
-  $height,
-  $direction
-) {
-  background: none;
-  border: 0;
-  font-size: $font-size;
-  line-height: $height;
+.user-info-boxa {
+  width: 350px;
+  height: 150px;
+}
+
+div.wrap {
   position: relative;
-  width: $width;
-  height: $height;
-  cursor: pointer;
-
-  @if $direction == "up" {
-    transform: rotate(-90deg);
-  } @else if $direction == "down" {
-    transform: rotate(90deg);
-  } @else if $direction == "right-up" {
-    transform: rotate(-10deg);
-  } @else if $direction == "left" {
-    transform: rotate(10deg);
-  }
-
-  span {
-    color: $color;
-    text-decoration: none;
-    position: relative;
-    z-index: 10;
-  }
-
-  &::before,
-  &::after {
-    background: $background;
-    border-radius: 2px;
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    transition: all 1s;
-    height: $height/2;
-  }
-
-  &::before {
-    box-shadow: -1px 1px 0 $shadow, -2px 2px 0 $shadow, -3px 3px 0 $shadow,
-      -4px 4px 0 $shadow;
-    transform: skew(45deg);
-    @if $direction == "left" {
-      bottom: 0;
-      z-index: 1;
-    } @else {
-      top: 0;
-    }
-  }
-
-  &::after {
-    box-shadow: 10px 10px 0 $shadow, 2px 2px 0 $shadow, 3px 3px 0 $shadow,
-      4px 4px 0 $shadow;
-    transform: skew(-45deg);
-    @if $direction == "left" {
-      top: 0;
-    } @else {
-      bottom: 0;
-    }
-  }
-
-  &:hover::before,
-  &:hover::after {
-    background: lighten($background, 15%);
-  }
-
-  &:focus {
-    &::before,
-    &::after {
-      background: lighten($background, 15%);
-    }
-    outline: 0;
-  }
+  height: max-content;
+  width: 350px;
 }
 
-/* How to include it */
-.btn-right {
-  @include arrow-button(#fff, #29c0d5, #1897c0, 70px, 8em, 2em, right-up);
-
-  &:hover {
-    animation: ease 2s;
-  }
+.drop-menu {
+  right: 13px;
 }
 
-.btn-left {
-  @include arrow-button(#fff, #e4135d, #c81163, 70px, 8em, 2em, left);
-
-  &:hover {
-    //animation: spin 1.5s linear;
-  }
-}
-
-@keyframes zoom {
-  25% {
-    transform: scale3d(1.5, 1.5, 0);
-  }
-
-  50% {
-    transform: scale3d(1, 1, 0);
-  }
-
-  75% {
-    transform: scale3d(1.25, 1.25, 0);
-  }
-}
-
-@keyframes spin {
-  100% {
-    transform: scale(0.7);
-  }
-}
-/* Page styling */
-
-body {
-  background: #fefefe;
-  font-family: "Noto sans", sans-serif;
-  text-align: center;
-  margin: 3em 0;
-}
-
-h1 {
-  color: #0b1421;
-  font-weight: 400;
-}
-
-button a {
-  top: -2px; // Better alignment for font
-}
-
-.placas {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  margin: 0;
+.drop-menu::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: white;
   position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: rotate(45deg);
+  left: 87%;
+  top: -2%;
 }
 
-.verticalLine {
-  border-left: 25px solid black;
-  height: 650px;
-  position: relative;
-  left: 50%;
-  top: 6%;
-  width: fit-content;
+.drop-menu .title {
+  text-align: center;
+  margin: 20px 0 0;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.drop-menu .desc {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-left: 3%;
+}
+
+.drop-menu ul {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.drop-menu ul li:not(:last-child) {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.drop-menu ul li {
+  font-family: "Montserrat", sans-serif;
+  padding: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.drop-menu ul li:hover {
+  color: crimson;
+}
+
+.drop-menu ul li:hover::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: crimson;
+  position: absolute;
+  margin: 5px 0;
+  animation: line 0.2s ease both;
+}
+
+.item-menu {
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+.item-menu a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.item-menu a:hover {
+  box-shadow: none;
+  color: inherit;
+  background-color: white;
+}
+
+.perfil-ativo {
+  color: red;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+@keyframes line {
+  to {
+    width: 93%;
+  }
 }

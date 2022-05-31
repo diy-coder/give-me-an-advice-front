@@ -1,0 +1,54 @@
+<div class="logo">
+  <a href="#" class="simple-text">
+    <div class="logo-img">
+      <img src="/assets/img/angular2-logo-red.png" />
+    </div>
+    Logo
+  </a>
+</div>
+<div class="sidebar-wrapper" style="background: #4258ca1f">
+  <ul class="nav">
+    <li
+      routerLinkActive="active"
+      *ngFor="let menuItem of menuItems"
+      class="{{ menuItem.class }} nav-item"
+    >
+      <a
+        class="nav-link"
+        [routerLink]="[menuItem.path]"
+        *ngIf="menuItem.subItems.length == 0"
+      >
+        <i class="material-icons">{{ menuItem.icon }}</i>
+        <p>{{ menuItem.title }}</p>
+      </a>
+
+      <a
+        *ngIf="menuItem.subItems.length > 0"
+        class="nav-link"
+        data-toggle="collapse"
+        href="#{{ menuItem.id }}"
+        aria-expanded="false"
+      >
+        <i class="material-icons">{{ menuItem.icon }}</i>
+        <p>
+          {{ menuItem.title }}
+          <b class="caret"></b>
+        </p>
+      </a>
+    </li>
+
+    <li routerLinkActive="active" class="nav-item" *ngIf="isUserAdmin">
+      <a class="nav-link clickme" [routerLink]="['configuracao']">
+        <i class="material-icons">settings</i>
+        <p>Configurações Gerais</p>
+      </a>
+    </li>
+
+    <li routerLinkActive="active" class="nav-item">
+      <a class="nav-link clickme" (click)="logout()">
+        <i class="material-icons">logout</i>
+        <p>Sair</p>
+      </a>
+    </li>
+  </ul>
+</div>

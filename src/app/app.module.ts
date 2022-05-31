@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from './componentes/forms/forms.module';
 import { MenuModule } from './componentes/menu/menu.module';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { SidebarModule } from './componentes/sidebar/sidebar.module';
 
 Amplify.configure(awsconfig);
 @NgModule({
@@ -20,6 +21,7 @@ Amplify.configure(awsconfig);
     FormsModule,
     BrowserAnimationsModule,
     MenuModule,
+    SidebarModule,
     HttpClientModule,
     AmplifyAuthenticatorModule,
   ],
