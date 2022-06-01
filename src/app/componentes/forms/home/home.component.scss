@@ -1,0 +1,71 @@
+@media all and (min-width: 991px) {
+  .acoes {
+    margin-top: 3%;
+  }
+
+  .botao-acao {
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    width: 35%;
+    font-weight: bold;
+    font-size: 45px;
+  }
+
+  .main-content {
+    padding: 0%;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .acoes {
+    margin-top: 3%;
+  }
+
+  .botao-acao {
+    margin-bottom: 10%;
+  }
+
+  .btn {
+    width: 65%;
+    font-weight: bold;
+    font-size: 45px;
+  }
+
+  .main-content {
+    padding: 0%;
+  }
+}
+
+@media all and (max-width: 691px) {
+  .botao-acao {
+    margin-bottom: 10%;
+  }
+
+  .btn {
+    width: 65%;
+    font-weight: bold;
+    font-size: 35px;
+  }
+
+  .main-content {
+    padding: 0%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .botao-acao {
+    margin-bottom: 10%;
+  }
+
+  .btn {
+    width: 65%;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  .main-content {
+    padding: 0%;
+  }
+}
