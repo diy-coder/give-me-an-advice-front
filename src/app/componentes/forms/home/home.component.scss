@@ -20,11 +20,11 @@
 
 @media all and (max-width: 991px) {
   .acoes {
-    margin-top: 3%;
+    margin-top: 5%;
   }
 
   .botao-acao {
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
 
   .btn {
@@ -39,8 +39,12 @@
 }
 
 @media all and (max-width: 691px) {
+  .acoes {
+    margin-top: 10%;
+  }
+
   .botao-acao {
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
 
   .btn {

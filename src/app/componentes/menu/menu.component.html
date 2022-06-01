@@ -40,16 +40,21 @@
           <div
             class="dropdown-menu dropdown-menu-right user-info-box wrap drop-menu"
             aria-labelledby="navbarDropdownUserLink"
+            *ngIf="userInfo"
           >
-            <h1 class="title">Seu Nome</h1>
+            <h1 class="title">{{ userInfo.attributes.email }}</h1>
             <ul>
-              <li (click)="goto('user')">
-                <i class="material-icons">account_circle</i>
-                <span class="item-menu">Ir para perfil</span>
-              </li>
-              <li (click)="goto('conf-usuario')">
+              <li (click)="goto('dicas')">
                 <i class="material-icons">settings</i>
-                <span class="item-menu">Configurações</span>
+                <span class="item-menu">Cadastro de Dicas</span>
+              </li>
+              <li (click)="goto('conselhos')">
+                <i class="material-icons">settings</i>
+                <span class="item-menu">Cadastro de Conselhos</span>
+              </li>
+              <li (click)="goto('motivacionais')">
+                <i class="material-icons">settings</i>
+                <span class="item-menu">Cadastro Motivacionais</span>
               </li>
               <li (click)="signOut()">
                 <i class="material-icons">logout</i

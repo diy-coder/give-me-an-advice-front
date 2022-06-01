@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CognitoUser } from '@aws-amplify/auth';
 import { Auth } from 'aws-amplify';
 
 @Component({
@@ -11,11 +13,15 @@ export class MenuComponent implements OnInit {
   title;
   activeProfile;
 
-  constructor(private element: ElementRef) {}
+  constructor(private element: ElementRef, private router: Router) {}
 
   ngOnInit(): void {
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+    Auth.currentAuthenticatedUser().then((data: CognitoUser) => {
+      console.log(data);
+      this.userInfo = data;
+    });
   }
 
   logout() {
@@ -106,7 +112,9 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  goto(page) {}
+  goto(page) {
+    this.router.navigate([page]);
+  }
 
   signOut() {
     Auth.signOut();
