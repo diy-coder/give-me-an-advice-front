@@ -1,7 +1,9 @@
 <div class="main-content">
   <div class="acoes center-vertical center">
     <div class="botao-acao">
-      <button class="btn btn-success">Dicas</button>
+      <button class="btn btn-success" (click)="goto('apresentacao/dicas')">
+        Dicas
+      </button>
     </div>
     <div class="botao-acao">
       <button class="btn btn-info">Conselhos</button>
@@ -10,7 +12,7 @@
       <button class="btn btn-warning">Motivacionais</button>
     </div>
     <div class="botao-acao">
-      <button class="btn btn-sucess" (click)="goto('sim-nao')">
+      <button class="btn btn-sucess" (click)="goto('apresentacao/sim-nao')">
         Sim / Não
       </button>
     </div>
