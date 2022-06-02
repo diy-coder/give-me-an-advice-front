@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { SimNaoComponent } from './componentes/forms/apresentacao/sim-nao/sim-nao.component';
 import { FormConselhoComponent } from './componentes/forms/conselho/form-conselho/form-conselho.component';
 import { ListConselhoComponent } from './componentes/forms/conselho/list-conselho/list-conselho.component';
 import { FormDicaComponent } from './componentes/forms/dica/form-dica/form-dica.component';
@@ -42,6 +43,10 @@ const routes: Routes = [
     path: 'motivacionais/:identificador',
     component: FormMotivacionalComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'sim-nao',
+    component: SimNaoComponent,
   },
   {
     path: '**',

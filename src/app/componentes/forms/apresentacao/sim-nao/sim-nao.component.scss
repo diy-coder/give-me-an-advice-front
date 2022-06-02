@@ -1,0 +1,45 @@
+.text {
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15em;
+}
+
+.progressbar {
+  position: fixed;
+  bottom: 3%;
+  left: 0;
+  width: 100%;
+}
+
+mat-progress-bar {
+  height: 50px !important;
+  border-radius: 25px;
+}
+
+@media all and (min-width: 991px) {
+  .main {
+    height: 100%;
+    position: fixed;
+    width: 85%;
+  }
+
+  .bar {
+    width: 50%;
+    margin-left: 35%;
+    margin-right: auto;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .main {
+    height: 100%;
+    position: fixed;
+    width: 100%;
+  }
+
+  .bar {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
