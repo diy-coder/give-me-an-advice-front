@@ -2,16 +2,19 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { ApresentacaoDicasComponent } from './componentes/forms/apresentacao/dicas/dicas.component';
-import { SimNaoComponent } from './componentes/forms/apresentacao/sim-nao/sim-nao.component';
+import { ApresentacaoComponent } from './componentes/forms/apresentacao/apresentacao.component';
+import { ConselhoResolver } from './componentes/forms/conselho/conselho.resolver';
 import { FormConselhoComponent } from './componentes/forms/conselho/form-conselho/form-conselho.component';
 import { ListConselhoComponent } from './componentes/forms/conselho/list-conselho/list-conselho.component';
+import { DicaResolver } from './componentes/forms/dica/dica.resolver';
 import { FormDicaComponent } from './componentes/forms/dica/form-dica/form-dica.component';
 import { ListDicaComponent } from './componentes/forms/dica/list-dica/list-dica.component';
 import { HomeComponent } from './componentes/forms/home/home.component';
 import { FormMotivacionalComponent } from './componentes/forms/motivacional/form-motivacional/form-motivacional.component';
 import { ListMotivacionalComponent } from './componentes/forms/motivacional/list-motivacional/list-motivacional.component';
+import { MotivacionalResolver } from './componentes/forms/motivacional/motivacional.resolver';
 import { AuthGuard } from './guards/auth.guard';
+import { SimNaoResolver } from './resolvers/sim-nao.resolver';
 
 const routes: Routes = [
   {
@@ -46,12 +49,24 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'apresentacao/sim-nao',
-    component: SimNaoComponent,
+    path: 'apresentacao/dicas',
+    component: ApresentacaoComponent,
+    resolve: { data: DicaResolver },
   },
   {
-    path: 'apresentacao/dicas',
-    component: ApresentacaoDicasComponent,
+    path: 'apresentacao/conselhos',
+    component: ApresentacaoComponent,
+    resolve: { data: ConselhoResolver },
+  },
+  {
+    path: 'apresentacao/motivacionais',
+    component: ApresentacaoComponent,
+    resolve: { data: MotivacionalResolver },
+  },
+  {
+    path: 'apresentacao/sim-nao',
+    component: ApresentacaoComponent,
+    resolve: { data: SimNaoResolver },
   },
   {
     path: '**',

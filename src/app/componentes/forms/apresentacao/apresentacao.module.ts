@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ApresentacaoDicasModule } from './dicas/dicas.module';
-import { SimNaoModule } from './sim-nao/sim-nao.module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ApresentacaoComponent } from './apresentacao.component';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, SimNaoModule, ApresentacaoDicasModule],
+  declarations: [ApresentacaoComponent],
+  imports: [CommonModule, MatProgressBarModule],
 })
 export class ApresentacaoModule {}

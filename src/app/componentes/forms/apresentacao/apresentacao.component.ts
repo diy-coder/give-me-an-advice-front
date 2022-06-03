@@ -1,30 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { DicaService } from '../../dica/dica.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-dicas',
-  templateUrl: './dicas.component.html',
-  styleUrls: ['./dicas.component.scss'],
+  selector: 'app-apresentacao',
+  templateUrl: './apresentacao.component.html',
+  styleUrls: ['./apresentacao.component.scss'],
 })
-export class ApresentacaoDicasComponent implements OnInit {
+export class ApresentacaoComponent implements OnInit {
   texto = 'Decidindo...';
   count = 0;
   porcentagem = 0;
   qtdIteracoes = 100;
   progressbarVisible = true;
-  dicaList: [] = [];
 
-  constructor(private dicaService: DicaService) {
+  constructor(private activatedRoute: ActivatedRoute) {
     this.progressbarVisible = true;
     this.porcentagem = 0;
     this.count = 0;
   }
 
   ngOnInit(): void {
-    this.dicaService.getAll().then((data: any) => {
-      this.dicaList = data;
-      this.runDecision(data);
-    });
+    const data = this.activatedRoute.snapshot.data['data'];
+    this.runDecision(data.dataList);
   }
 
   private runDecision(data: any[]) {
