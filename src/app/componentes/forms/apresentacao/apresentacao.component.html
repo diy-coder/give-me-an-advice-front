@@ -1,8 +1,20 @@
 <div class="main">
-  <div class="center center-vertical">
+  <div class="back-button clickme" (click)="goBack()">
+    <img src="../../../../assets/img/arrow_back.svg" />
+    <span>Voltar</span>
+  </div>
+  <div class="center center-vertical" *ngIf="respondendo">
     <div class="text">{{ texto }}</div>
   </div>
-  <div class="progressbar" *ngIf="progressbarVisible">
+  <div class="center center-vertical" *ngIf="!respondendo">
+    <div class="text-frase">{{ data.frase }}</div>
+    <div class="">
+      <button class="btn btn-success" (click)="revelarResposta()">
+        Revelar
+      </button>
+    </div>
+  </div>
+  <div class="progressbar" *ngIf="respondendo && progressbarVisible">
     <div class="bar">
       <mat-progress-bar
         mode="determinate"

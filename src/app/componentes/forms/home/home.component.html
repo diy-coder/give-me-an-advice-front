@@ -1,4 +1,12 @@
 <div class="main-content">
+  <div
+    class="back-button clickme"
+    (click)="login()"
+    *ngIf="!(authService.loggedIn | async)"
+  >
+    <img src="../../../../assets/img/login_black.svg" />
+    <span>Login</span>
+  </div>
   <div class="acoes center-vertical center">
     <div class="botao-acao">
       <button class="btn btn-success" (click)="goto('apresentacao/dicas')">
@@ -10,7 +18,7 @@
         Conselhos
       </button>
     </div>
-    <div class="botao-acao">
+    <div class="botao-acao" *ngIf="false">
       <button
         class="btn btn-warning"
         (click)="goto('apresentacao/motivacionais')"

@@ -5,12 +5,16 @@ import {
   Router,
 } from '@angular/router';
 import { Auth } from 'aws-amplify';
-import { Observable } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { NotificationService } from '../componentes/notification/notification.service';
+import { map, tap, catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard {
-  constructor(private notification: NotificationService) {}
+  constructor(
+    private notification: NotificationService,
+    private router: Router
+  ) {}
 
   canActivate({
     route,
@@ -19,15 +23,18 @@ export class AuthGuard {
     route: ActivatedRouteSnapshot;
     state: RouterStateSnapshot;
   }): boolean | Observable<boolean> | Promise<boolean> {
-    return new Promise((resolve) => {
-      Auth.currentUserInfo().then((d) => {
-        if (!d.attributes.email_verified) {
-          this.notification.showError(
-            'Usuário precisa ter o email verificado para sugerir novas Frases.'
-          );
-        }
-        resolve(d.attributes.email_verified);
-      });
-    });
+    return this.isAuthenticated();
+  }
+
+  public isAuthenticated(): Observable<boolean> {
+    return from(Auth.currentAuthenticatedUser()).pipe(
+      map((result) => {
+        return true;
+      }),
+      catchError((error) => {
+        this.router.navigate(['login']);
+        return of(false);
+      })
+    );
   }
 }

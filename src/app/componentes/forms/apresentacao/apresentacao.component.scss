@@ -8,6 +8,15 @@
   padding: 10px;
 }
 
+.botao {
+  font-size: 3vw;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  line-height: 1;
+}
+
 .progressbar {
   position: fixed;
   bottom: 3%;
@@ -28,10 +37,19 @@ mat-progress-bar {
     margin-right: auto;
   }
 
+  .text-frase {
+    font-size: 3vw;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1;
+    text-align: justify;
+  }
+
   .main {
     height: 100%;
     position: fixed;
-    width: 85%;
+    width: 100%;
   }
 
   .bar {
@@ -42,6 +60,13 @@ mat-progress-bar {
 }
 
 @media all and (max-width: 991px) {
+  .text-frase {
+    font-size: 6vw;
+    font-family: "Arial";
+    line-height: 1;
+    text-align: justify;
+    padding: 3%;
+  }
   .text {
     font-size: 10vw;
   }
@@ -56,4 +81,23 @@ mat-progress-bar {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.back-button {
+  border: solid 3px #2d8c8c;
+  padding: 3px;
+  border-radius: 25px;
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.back-button img {
+  background-color: #2d8c8c;
+  border-radius: 50%;
+}
+
+.back-button span {
+  padding: 10px;
 }

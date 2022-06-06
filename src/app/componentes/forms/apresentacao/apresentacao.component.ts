@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,16 +13,29 @@ export class ApresentacaoComponent implements OnInit {
   porcentagem = 0;
   qtdIteracoes = 100;
   progressbarVisible = true;
+  respondendo = false;
+  data;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private location: Location
+  ) {
     this.progressbarVisible = true;
     this.porcentagem = 0;
     this.count = 0;
+    this.respondendo = false;
   }
 
   ngOnInit(): void {
-    const data = this.activatedRoute.snapshot.data['data'];
-    this.runDecision(data.dataList);
+    this.data = this.activatedRoute.snapshot.data['data'];
+  }
+
+  revelarResposta() {
+    this.progressbarVisible = true;
+    this.porcentagem = 0;
+    this.count = 0;
+    this.respondendo = true;
+    this.runDecision(this.data.dataList);
   }
 
   private runDecision(data: any[]) {
@@ -38,5 +52,9 @@ export class ApresentacaoComponent implements OnInit {
         this.progressbarVisible = false;
       }
     }, 50);
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

@@ -2,16 +2,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import Amplify from 'aws-amplify';
 import AWSAppSyncClient from 'aws-appsync';
 import awsconfig from '../aws-exports';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from './componentes/forms/forms.module';
-import { MenuModule } from './componentes/menu/menu.module';
-import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
-import { SidebarModule } from './componentes/sidebar/sidebar.module';
 import { ApresentacaoModule } from './componentes/forms/apresentacao/apresentacao.module';
+import { FormsModule } from './componentes/forms/forms.module';
+import { LoginModule } from './componentes/login/login.module';
+import { MenuModule } from './componentes/menu/menu.module';
+import { SidebarModule } from './componentes/sidebar/sidebar.module';
 
 Amplify.configure(awsconfig);
 @NgModule({
@@ -26,6 +27,7 @@ Amplify.configure(awsconfig);
     ApresentacaoModule,
     HttpClientModule,
     AmplifyAuthenticatorModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -73,3 +73,22 @@
     padding: 0%;
   }
 }
+
+.back-button {
+  border: solid 3px #2d8c8c;
+  padding: 3px;
+  border-radius: 25px;
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.back-button img {
+  background-color: #2d8c8c;
+  border-radius: 50%;
+}
+
+.back-button span {
+  padding: 10px;
+}

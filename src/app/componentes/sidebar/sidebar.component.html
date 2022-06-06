@@ -35,6 +35,25 @@
           <b class="caret"></b>
         </p>
       </a>
+      <div
+        class="collapse"
+        routerLinkActive="show"
+        id="{{ menuItem.id }}"
+        *ngIf="menuItem.subItems.length > 0"
+      >
+        <ul class="nav">
+          <li
+            class="nav-item"
+            routerLinkActive="active"
+            *ngFor="let subitem of menuItem.subItems"
+          >
+            <a class="nav-link" [routerLink]="[subitem.path]">
+              <i class="material-icons">{{ subitem.icon }}</i>
+              <p>{{ subitem.title }}</p>
+            </a>
+          </li>
+        </ul>
+      </div>
     </li>
 
     <li routerLinkActive="active" class="nav-item" *ngIf="isUserAdmin">

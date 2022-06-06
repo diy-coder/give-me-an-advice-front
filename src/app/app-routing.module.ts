@@ -13,17 +13,24 @@ import { HomeComponent } from './componentes/forms/home/home.component';
 import { FormMotivacionalComponent } from './componentes/forms/motivacional/form-motivacional/form-motivacional.component';
 import { ListMotivacionalComponent } from './componentes/forms/motivacional/list-motivacional/list-motivacional.component';
 import { MotivacionalResolver } from './componentes/forms/motivacional/motivacional.resolver';
+import { LoginComponent } from './componentes/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { SimNaoResolver } from './resolvers/sim-nao.resolver';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
     path: 'home',
     component: HomeComponent,
+    outlet: 'public',
   },
   {
     path: 'conselhos',
     component: ListConselhoComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'conselhos/:identificador',
@@ -33,6 +40,7 @@ const routes: Routes = [
   {
     path: 'dicas',
     component: ListDicaComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'dicas/:identificador',
@@ -42,6 +50,7 @@ const routes: Routes = [
   {
     path: 'motivacionais',
     component: ListMotivacionalComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'motivacionais/:identificador',

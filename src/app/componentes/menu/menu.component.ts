@@ -18,9 +18,6 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-    Auth.currentAuthenticatedUser().then((data: CognitoUser) => {
-      this.userInfo = data;
-    });
   }
 
   logout() {
