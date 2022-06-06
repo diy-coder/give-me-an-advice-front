@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -13,36 +14,6 @@ declare interface RouteInfo {
   subItems: Object;
   descricao: string;
 }
-export let ROUTES: RouteInfo[] = [
-  {
-    id: null,
-    path: '/home',
-    title: 'Início',
-    icon: 'home',
-    class: '',
-    subItems: [],
-    descricao: 'Início',
-  },
-  {
-    id: null,
-    path: '/conf',
-    title: 'Configurações',
-    icon: 'settings',
-    class: '',
-    subItems: [],
-    descricao: 'Configurações',
-  },
-  {
-    id: null,
-    path: '/estilos',
-    title: 'Estilos',
-    icon: 'dark_mode',
-    class: '',
-    subItems: [],
-    descricao: 'Estilos',
-  },
-];
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -53,8 +24,54 @@ export class SidebarComponent implements OnInit {
   selectedCNPJ = null;
   isUserAdmin = false;
 
-  constructor(private router: Router) {
-    ROUTES.push({
+  routes: RouteInfo[] = [
+    {
+      id: null,
+      path: '/home',
+      title: 'Início',
+      icon: 'home',
+      class: '',
+      subItems: [],
+      descricao: 'Início',
+    },
+    {
+      id: null,
+      path: '/conf',
+      title: 'Configurações',
+      icon: 'settings',
+      class: '',
+      subItems: [],
+      descricao: 'Configurações',
+    },
+    {
+      id: null,
+      path: '/estilos',
+      title: 'Estilos',
+      icon: 'dark_mode',
+      class: '',
+      subItems: [],
+      descricao: 'Estilos',
+    },
+  ];
+
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.authService.isAuthenticated().subscribe((logged) => {
+      if (logged) {
+        this.addOptionsIfLogged();
+      }
+
+      this.loadMenu();
+    });
+  }
+
+  addOptionsIfLogged() {
+    this.routes.push({
       id: 'sub-cadastros',
       path: '/sub-cadastros',
       title: 'Cadastros',
@@ -80,12 +97,9 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.menuItems = ROUTES.filter((menuItem) => menuItem);
-    this.loadData();
+  loadMenu() {
+    this.menuItems = this.routes.filter((menuItem) => menuItem);
   }
-
-  loadData() {}
 
   isMobileMenu() {
     if ($(window).width() > 991) {
